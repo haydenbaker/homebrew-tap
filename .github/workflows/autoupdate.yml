@@ -37,22 +37,22 @@ jobs:
         run: |
           hash_url="${{ env.release_prefix }}/${{ env.version }}/smithy-cli-darwin-x86_64${{ env.artifact_ext }}.sha256"
           echo $hash_url
-          curl -fJLO $hash_url
+          ﻿﻿timeout 120 bash -c "until curl -fJLO $hash_url; do sleep 30; done"
       - name: mac-arm
         run: |
           hash_url="${{ env.release_prefix }}/${{ env.version }}/smithy-cli-darwin-aarch64${{ env.artifact_ext }}.sha256"
           echo $hash_url
-          curl -fJLO $hash_url
+          ﻿﻿timeout 120 bash -c "until curl -fJLO $hash_url; do sleep 30; done"
       - name: linux
         run: |
           hash_url="${{ env.release_prefix }}/${{ env.version }}/smithy-cli-linux-x86_64${{ env.artifact_ext }}.sha256"
           echo $hash_url
-          curl -fJLO $hash_url
+          ﻿﻿timeout 120 bash -c "until curl -fJLO $hash_url; do sleep 30; done"
       - name: linux-arm
         run: |
           hash_url="${{ env.release_prefix }}/${{ env.version }}/smithy-cli-linux-aarch64${{ env.artifact_ext }}.sha256"
           echo $hash_url
-          curl -fJLO $hash_url
+          ﻿﻿timeout 120 bash -c "until curl -fJLO $hash_url; do sleep 30; done"
       - name: Save artifacts
         uses: actions/upload-artifact@v4
         with:

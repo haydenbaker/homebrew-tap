@@ -33,6 +33,9 @@ jobs:
     needs: pre-flight
     runs-on: ubuntu-latest
     steps:
+      - name: coreutils
+        run: |
+          sudo apt-get install coreutils
       - name: mac
         run: |
           hash_url="${{ env.release_prefix }}/${{ env.version }}/smithy-cli-darwin-x86_64${{ env.artifact_ext }}.sha256"
